@@ -1,9 +1,9 @@
 Raspberry Pi 4 UEFI Firmware Images
 ===================================
 
-[![Build status](https://img.shields.io/github/workflow/status/pftf/RPi4/UEFI%20firmware%20-%20EDK2%20build.svg?style=flat-square)](https://github.com/pftf/RPi4/actions)
-[![Github stats](https://img.shields.io/github/downloads/pftf/RPi4/total.svg?style=flat-square)](https://github.com/pftf/RPi4/releases)
-[![Release](https://img.shields.io/github/release-pre/pftf/RPi4?style=flat-square)](https://github.com/pftf/RPi4/releases)
+[![Build status](https://img.shields.io/github/workflow/status/wranders/RPi4/UEFI%20firmware%20-%20EDK2%20build.svg?style=flat-square)](https://github.com/wranders/RPi4/actions)
+[![Github stats](https://img.shields.io/github/downloads/wranders/RPi4/total.svg?style=flat-square)](https://github.com/wranders/RPi4/releases)
+[![Release](https://img.shields.io/github/release-pre/wranders/RPi4?style=flat-square)](https://github.com/wranders/RPi4/releases)
 
 # Summary
 
@@ -26,26 +26,24 @@ __PLEASE READ THE FOLLOWING:__
   have to be provided by a third party. Please do not ask for them here, as they fall
   outside of the scope of this project.
 
-* A 3 GB RAM limit is enforced __by default__, even if you are using a Raspberry Pi 4
-  model that has 4 GB or 8 GB of RAM, on account that the OS **must** patch DMA access,
-  to work around a hardware bug that is present in the Broadcom SoC.  
-  For Linux this usually translates to using a recent kernel (version 5.8 or later) and
-  for Windows this requires the installation of a filter driver.  
-  If you are running an OS that has been adequately patched,  you can disable the 3 GB
-  limit by going to `Device Manager` → `Raspberry Pi Configuration` → `Advanced Settings`
-  in the UEFI settings.
-
 * This firmware is built from the
   [official EDK2 repository](https://github.com/tianocore/edk2-platforms/tree/master/Platform/RaspberryPi/RPi4),
   with the following extra patch applied:
   * `0001-MdeModulePkg-UefiBootManagerLib-Signal-ReadyToBoot-o.patch`, so that the
     Graphical console is set as default.
+  * `0002-Check-for-Boot-Discovery-Policy-change.patch`, so that all boot options
+    are only refreshed if the Boot Discovery Policy has been changed
+  * `wranders0001-Disable-RamLimitTo3GB.patch` to disable the 3GB RAM limit.
+
+* The `config.txt` additionally loads the following Device Tree Overlays:
+  * `disable-bt` disables Bluetooth functionality
+  * `disable-wifi` disables wireless networking functionality
 
 🔺🔺🔺🔺🔺🔺🔺🔺🔺
 
 # Installation
 
-* Download the latest archive from the [Releases](https://github.com/pftf/RPi4/releases)
+* Download the latest archive from the [Releases](https://github.com/wranders/RPi4/releases)
   repository.
 
 * Create an SD card or a USB drive, with at least one partition (it can be a regular
@@ -77,7 +75,7 @@ card or on a USB drive in `efi/boot/bootaa64.efi`, you can let the UEFI system r
 
 The firmware provided in the zip archive is the `RELEASE` version but you can also find
 a `DEBUG` build of the firmware in the
-[GitHub CI artifacts](https://github.com/pftf/RPi4/actions).
+[GitHub CI artifacts](https://github.com/wranders/RPi4/actions).
 
 The provided firmwares should be able to auto-detect the UART being used (PL011 or mini
 UART) according to whether `config.txt` contains the relevant overlay or not. The default
