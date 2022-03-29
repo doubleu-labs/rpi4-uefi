@@ -29,6 +29,9 @@ jobs:
       id: set_version
       run: echo "::set-output name=version::${GITHUB_REF/refs\/tags\//}"
 
+    - name: Update Linux environment
+      run: sudo apt update
+
     - name: Set up Linux environment
       run: sudo apt install acpica-tools gcc-aarch64-linux-gnu python3-distutils uuid-dev
 
