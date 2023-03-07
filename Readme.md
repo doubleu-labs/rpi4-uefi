@@ -1,7 +1,7 @@
 Raspberry Pi 4 UEFI Firmware Images
 ===================================
 
-[![Build status](https://img.shields.io/github/workflow/status/wranders/RPi4/UEFI%20firmware%20-%20EDK2%20build.svg?style=flat-square)](https://github.com/wranders/RPi4/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/wranders/RPi4/linux_edk2.yml?style=flat-square)](https://github.com/wranders/RPi4/actions)
 [![Github stats](https://img.shields.io/github/downloads/wranders/RPi4/total.svg?style=flat-square)](https://github.com/wranders/RPi4/releases)
 [![Release](https://img.shields.io/github/release-pre/wranders/RPi4?style=flat-square)](https://github.com/wranders/RPi4/releases)
 
