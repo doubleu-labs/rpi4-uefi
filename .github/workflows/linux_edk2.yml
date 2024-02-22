@@ -9,7 +9,7 @@ on:
       - '*'
 
 env:
-  PROJECT_URL: https://github.com/wranders/RPi4
+  PROJECT_URL: https://github.com/doubleu-labs/rpi4-uefi
   RPI_FIRMWARE_URL: https://github.com/raspberrypi/firmware/
   ARCH: AARCH64
   COMPILER: GCC5
